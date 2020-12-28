@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.bg-color-primary-0 { background-color: #2F3345 }	/* Main Primary color */
+.bg-color-primary-1 { background-color: #595E72 }
+.bg-color-primary-2 { background-color: #44495F }
+.bg-color-primary-3 { background-color: #212842 }
+.bg-color-primary-4 { background-color: #161E3C }
+.spacer {flex: 1 1 auto;}
+.circle-avatar { height: 64px; width: 64px; border-radius: 50%; }
+.left {float: left;}
+.right {float: right;}
