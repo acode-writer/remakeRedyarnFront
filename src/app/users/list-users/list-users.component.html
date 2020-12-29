@@ -1,50 +1,50 @@
-<div class="row mt-5">
-  <span class="btn" [routerLink]="['/admin/add-users']"><i class="fas fa-user-plus "></i></span>
+<div class="card mt-4 shadow-lg">
+  <div class="card-body shadow-lg">
+    <div class="row d-flex justify-content-end">
+      <span class="btn" [routerLink]="['/admin/add-users']"><i class="fas fa-user-plus "></i></span>
+    </div>
+    <div class="table-responsive">
+      <table class="table shadow">
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Profil</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users" >
+            <th scope="row">{{user.lastname}}</th>
+            <td>{{user.firstname}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.profil.libelle|lowercase}}</td>
+            <td class="">
+              <span class="btn" title="Détails"><i class="far fa-info-circle"></i></span>
+              <span class="btn text-warning" title="Editer"><i class="fas fa-edit"></i></span>
+              <span class="btn text-danger" title="Supprimer"><i class="far fa-trash-alt"></i></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <nav class="d-flex justify-content-end p-0" aria-label="Page navigation example">
+      <ul class="pagination shadow">
+        <li class="page-item">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link">1</a></li>
+        <li class="page-item"><a class="page-link">2</a></li>
+        <li class="page-item"><a class="page-link">3</a></li>
+        <li class="page-item">
+          <a class="page-link"  aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-<nav class="d-flex justify-content-end" aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>

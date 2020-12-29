@@ -1,7 +1,7 @@
 import { Profil } from './profil.models';
 export interface User {
   id: number|null;
-  fistname: string;
+  firstname: string;
   lastname: string;
   email: string;
   password: string|null;

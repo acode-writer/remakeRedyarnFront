@@ -1,8 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-color-primary-3">
+  <div class="navbar-brand"></div>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarColor01" >
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto btn" >
       <li class="nav-item dropdown show">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Paramètres</a>
@@ -11,7 +13,6 @@
           <a class="dropdown-item" [routerLink]="['/admin/referentiels']">Referentiels</a>
           <a class="dropdown-item" [routerLink]="['/admin/groupe-competences']">Groupe de compétences</a>
           <a class="dropdown-item" [routerLink]="['/admin/competences']">Compétences</a>
-          <a class="dropdown-item">Groupe de tags</a>
           <a class="dropdown-item" [routerLink]="['/admin/profils-sorties']">Profil de sortie</a>
         </div>
       </li>

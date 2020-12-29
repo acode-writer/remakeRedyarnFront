@@ -1,3 +1,4 @@
+import { GroupeCompetence } from './../../../Models/groupe-competence.models';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./list-item-grpe-competence.component.css']
 })
 export class ListItemGrpeCompetenceComponent implements OnInit {
+  @Input() grpeCompetence!: GroupeCompetence;
   constructor() { }
 
   ngOnInit(): void {

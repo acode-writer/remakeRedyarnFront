@@ -18,7 +18,6 @@ export class LoginService {
       const helper = new JwtHelperService();
       this.decodedToken = helper.decodeToken(token);
       this.isExpired = helper.isTokenExpired(token);
-      this.headerService.role = this.decodedToken.roles[0];
     }
 
   }

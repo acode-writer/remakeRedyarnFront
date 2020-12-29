@@ -1,10 +1,11 @@
 <div class="accordion shadow" id="accordionExample">
   <div class="card">
     <div class="card-header d-flex justify-content-between text-white bg-color-primary-3">
-      <span>libelle</span>
+      <span> {{referentiel.libelle | summarize: 10}} </span>
       <span>
-        <i class="fas fa-pencil-alt btn btn-sm text-white"></i>
-        <i class="fas fa-times btn btn-sm text-white"></i>
+        <i class="far fa-print btn btn-sm text-white" title="Imprimer"></i>
+        <i class="fas fa-pencil-alt btn btn-sm text-white" title="Modifier"></i>
+        <i class="fas fa-times btn btn-sm text-white" title="Supprimer"></i>
       </span>
     </div>
   </div>
@@ -17,9 +18,7 @@
       </h2>
     </div>
     <div id="presentation" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
+      <div class="card-body"> {{referentiel.presentation}} </div>
     </div>
   </div>
   <div class="card">
@@ -46,9 +45,7 @@
       </h2>
     </div>
     <div id="programme" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
+      <div class="card-body"> {{referentiel.programme}} </div>
     </div>
   </div>
   <div class="card">
@@ -60,9 +57,7 @@
       </h2>
     </div>
     <div id="critereEvaluation" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
+      <div class="card-body"> {{referentiel.critereEvaluation}} </div>
     </div>
   </div>
   <div class="card">
@@ -74,9 +69,7 @@
       </h2>
     </div>
     <div id="critereAdmission" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
+      <div class="card-body"> {{referentiel.critereAdmission}} </div>
     </div>
   </div>
 </div>

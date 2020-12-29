@@ -1,68 +1,126 @@
-<form formGroup class="mt-4">
-  <div class="form-group row">
-    <label for="inputLangue" class="col-sm-3 col-form-label">Choix de la langue</label>
-    <div class="col-sm-5">
-      <div class="form-group">
-        <select class="form-control" name="" id="inputLangue">
-          <option>Choix de la langue</option>
-          <option></option>
-          <option></option>
-        </select>
+<div class="card mt-4 shadow-lg">
+  <div class="card-body shadow-lg">
+    <div id="stepper1" class="bs-stepper">
+      <div class="bs-stepper-header">
+        <div class="step" data-target="#test-l-1">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">1</span>
+            <span class="bs-stepper-label">Promo</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-2">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">2</span>
+            <span class="bs-stepper-label">Apprenants</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#test-l-3">
+          <button class="step-trigger">
+            <span class="bs-stepper-circle">3</span>
+            <span class="bs-stepper-label">Validate</span>
+          </button>
+        </div>
+      </div>
+      <div class="bs-stepper-content">
+        <form formGroup (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+          <div id="test-l-1" class="content">
+            <div class="form-group row">
+              <label for="inputLangue" class="col-sm-3 col-form-label">Choix de la langue</label>
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <select class="form-control" name="" id="inputLangue" required>
+                    <option>Choix de la langue</option>
+                    <option></option>
+                    <option></option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputTitre" class="col-sm-3 col-form-label">Titre</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="" id="inputTitre"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputDescription" class="col-sm-3 col-form-label">Description de la promotion</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="" id="inputDescription"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputLieu" class="col-sm-3 col-form-label">Lieu de la promotion</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="" id="inputLieu"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputRefAgate" class="col-sm-3 col-form-label">Reference agate</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="" id="inputRefAgate"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputFabrique" class="col-sm-3 col-form-label">Choix de la fabrique</label>
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <select class="form-control" name="" id="inputFabrique">
+                    <option>Choix de la fabrique</option>
+                    <option></option>
+                    <option></option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputStartedAt" class="col-sm-3 col-form-label">Date de debut</label>
+              <div class="col-sm-5">
+                <input type="date" class="form-control" name="" id="inputStartedAt"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputEndedAt" class="col-sm-3 col-form-label">Date de fin</label>
+              <div class="col-sm-5">
+                <input type="date" class="form-control" name="" id="inputEndedAt"/>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="button" (click)="next()" class="btn btn-primary">Next</button>
+            </div>
+          </div>
+          <div id="test-l-2" class="content">
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+            </div>
+            <div class="d-flex justify-content-center">
+              <button type="button" (click)="previous()" class="btn btn-primary mr-sm-2">Previous</button>
+              <button type="button" (click)="next()" class="btn btn-primary ml-sm-2">Next</button>
+            </div>
+          </div>
+          <div id="test-l-3" class="content text-center">
+            <div class="d-flex justify-content-center">
+              <button type="button" (click)="previous()" class="btn btn-primary mr-sm-2">Previous</button>
+              <button type="submit" class="btn btn-primary mr-sm-2">Submit</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputTitre" class="col-sm-3 col-form-label">Titre</label>
-    <div class="col-sm-5">
-      <input type="text" class="form-control" name="" id="inputTitre"/>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputDescription" class="col-sm-3 col-form-label">Description de la promotion</label>
-    <div class="col-sm-5">
-      <input type="text" class="form-control" name="" id="inputDescription"/>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputLieu" class="col-sm-3 col-form-label">Lieu de la promotion</label>
-    <div class="col-sm-5">
-      <input type="text" class="form-control" name="" id="inputLieu"/>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputRefAgate" class="col-sm-3 col-form-label">Reference agate</label>
-    <div class="col-sm-5">
-      <input type="text" class="form-control" name="" id="inputRefAgate"/>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputFabrique" class="col-sm-3 col-form-label">Choix de la fabrique</label>
-    <div class="col-sm-5">
-      <div class="form-group">
-        <select class="form-control" name="" id="inputFabrique">
-          <option>Choix de la fabrique</option>
-          <option></option>
-          <option></option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputStartedAt" class="col-sm-3 col-form-label">Date de debut</label>
-    <div class="col-sm-5">
-      <input type="date" class="form-control" name="" id="inputStartedAt"/>
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputEndedAt" class="col-sm-3 col-form-label">Date de fin</label>
-    <div class="col-sm-5">
-      <input type="date" class="form-control" name="" id="inputEndedAt"/>
-    </div>
-  </div>
+    <!-- <form formGroup class="">
+      <div class="form-group row">
 
-  <div class="form-group row d-flex justify-content-center mt-4">
-    <button type="submit" class="btn bg-color-primary-3 btn-lg text-white ">Soumettre</button>
+      </div>
+
+
+
+      <div class="form-group row d-flex justify-content-center mt-4">
+        <button type="submit" class="btn bg-color-primary-3 btn-lg text-white ">Soumettre</button>
+      </div>
+    </form> -->
   </div>
-</form>
+</div>
 
 

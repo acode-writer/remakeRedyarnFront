@@ -28,6 +28,7 @@ import { ListGrpeCompetencesComponent } from './grpe-competences/list-grpe-compe
 import { ListItemGrpeCompetenceComponent } from './grpe-competences/list-grpe-competences/list-item-grpe-competence/list-item-grpe-competence.component';
 import { ListReferentielsComponent } from './referentiels/list-referentiels/list-referentiels.component';
 import { ListItemReferentielComponent } from './referentiels/list-referentiels/list-item-referentiel/list-item-referentiel.component';
+import { SummarizePipe } from './pipes/summarize.pipe';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ListItemReferentielComponent } from './referentiels/list-referentiels/l
     ListItemGrpeCompetenceComponent,
     ListReferentielsComponent,
     ListItemReferentielComponent,
+    SummarizePipe,
   ],
   imports: [
     BrowserModule,
