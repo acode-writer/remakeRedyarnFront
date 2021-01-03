@@ -1,3 +1,4 @@
+import { ExpiredGuardService } from './guard/expired-guard.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -16,15 +17,22 @@ import { AddReferentielComponent } from './referentiels/add-referentiel/add-refe
 import { AddPromoComponent } from './promos/add-promo/add-promo.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { DetailUserComponent } from './users/detail-user/detail-user.component';
+import { AddProfilComponent } from './profils/add-profil/add-profil.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { AuthGuardService } from './guard/auth-guard.service';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'list', component: ListComponent},
-  {path: 'admin', component: AdminComponent,
+  {path: 'unauthorized', component: UnauthorizedComponent},
+  {path: 'admin', component: AdminComponent,canActivate: [AuthGuardService,ExpiredGuardService] ,
   children:[
     {path: 'profils', component: ProfilsComponent},
+    {path: 'add-profils', component: AddProfilComponent},
     {path: 'users', component: UsersComponent },
+    {path: 'detail-user/:id', component: DetailUserComponent },
     {path: 'add-users', component: AddUserComponent },
     {path: 'profils-sorties', component: ListProfilSortiesComponent },
     {path: 'groupe-competences', component: GrpeCompetencesComponent },

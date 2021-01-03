@@ -1,50 +1,51 @@
-<div class="row mt-5">
+<!-- <div class="row mt-5">
   <span class=""><i class="fas fa-user-plus "></i></span>
+</div> -->
+<div class="card shadow-lg mt-5">
+  <div class="card-body shadow-lg">
+    <div class="row">
+      <div class="col-sm">
+        <h2 class="text-center">Liste des profils</h2>
+      </div>
+    </div>
+    <table class="table mt-2">
+      <thead>
+        <tr>
+          <th scope="col" >Libelle</th>
+          <th scope="col" class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let profil of profils">
+          <td>{{profil.libelle|capitalize}} loremmmmm</td>
+          <td>
+            <span class="btn col-sm-4 text-left" title="Liste {{profil.libelle|lowercase}}"><i class="fal fa-list"></i> <span class="ml-2">Liste {{profil.libelle|lowercase}}</span></span>
+            <span class="btn col-sm-4 text-left" title="Editer"><i class="fas fa-edit text-warning"></i> <span class="ml-2">Éditer</span></span>
+            <span class="btn col-sm-4 text-left" title="Supprimer"><i class="far fa-trash-alt text-danger"></i> <span class="ml-2">Supprimer</span></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <div class="col-sm-10">
+        <nav class="d-flex justify-content-end" aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link">1</a></li>
+            <li class="page-item"><a class="page-link">2</a></li>
+            <li class="page-item"><a class="page-link">3</a></li>
+            <li class="page-item">
+              <a class="page-link" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
 </div>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-<nav class="d-flex justify-content-end" aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>

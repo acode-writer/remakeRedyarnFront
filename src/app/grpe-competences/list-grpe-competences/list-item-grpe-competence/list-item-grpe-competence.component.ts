@@ -1,5 +1,5 @@
-import { GroupeCompetence } from './../../../Models/groupe-competence.models';
 import { Component, Input, OnInit } from '@angular/core';
+import { GroupeCompetence } from '../../../models/groupe-competence.models';
 
 @Component({
   selector: 'app-list-item-grpe-competence',

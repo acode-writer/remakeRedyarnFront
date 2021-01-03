@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Competence } from './../../Models/competence.models';
+import { Competence } from '../../models/competence.models';
 import { GroupeCompetencesRequestService } from './../../services/groupe-competences/groupe-competences-request.service';
-import { GroupeCompetence } from './../../Models/groupe-competence.models';
-import { Niveau } from './../../Models/niveau.models';
+import { GroupeCompetence } from '../../models/groupe-competence.models';
+import { Niveau } from '../../models/niveau.models';
 
 @Component({
   selector: 'app-list-competences',
@@ -30,10 +30,6 @@ export class ListCompetencesComponent implements OnInit, OnDestroy {
         );
   }
 
-  ngOnDestroy(): void {
-    this.groupeCompetencesSubscription.unsubscribe();
-  }
-
   setCompetence(){
     const selectedGroupeCompetence = +this.form.value.select
     if(selectedGroupeCompetence){
@@ -41,11 +37,11 @@ export class ListCompetencesComponent implements OnInit, OnDestroy {
       this.competences = grpeCompetence == null ? [] : grpeCompetence.competences;
     }
   }
-  getLevels(competence: Competence) {
-    if(competence){
-      const competence = this.findCompetence(competence.id);
-      this.niveaux = competence == null ? [] : competence.niveaux;
-    }
+  getLevels(id: number) {
+    const competence = this.findCompetence(id);
+    this.niveaux = competence == null ? [] : competence.niveaux;
+    console.log(this.niveaux);
+
   }
   findCompetence(id: number){
     const competence = this.competences.find((skill: Competence) => {
@@ -58,5 +54,9 @@ export class ListCompetencesComponent implements OnInit, OnDestroy {
       return skillGroup.id === id;
     });
     return grpeCompetence;
+  }
+
+  ngOnDestroy(): void {
+    this.groupeCompetencesSubscription.unsubscribe();
   }
 }

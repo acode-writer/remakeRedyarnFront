@@ -1,4 +1,7 @@
+import { LoginService } from './../services/login/login.service';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { environment } from './../../environments/environment';
 import { HeaderService } from './../services/header/header.service';
 
 @Component({
@@ -7,11 +10,14 @@ import { HeaderService } from './../services/header/header.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(public headerService: HeaderService) { }
+  isConnected = false;
+  constructor(private router: Router,public loginService: LoginService) { }
 
   ngOnInit(): void {
-
   }
-
+  onLogout(){
+    this.isConnected = false;
+    localStorage.removeItem(environment.tokenName);
+    this.router.navigate(['/login']);
+  }
 }

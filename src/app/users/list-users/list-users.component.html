@@ -1,17 +1,22 @@
 <div class="card mt-4 shadow-lg">
   <div class="card-body shadow-lg">
-    <div class="row d-flex justify-content-end">
-      <span class="btn" [routerLink]="['/admin/add-users']"><i class="fas fa-user-plus "></i></span>
+    <div class="row">
+      <div class="col-sm-10">
+        <h2 class="text-center">Liste des utilisateurs</h2>
+      </div>
+      <div class="col-sm">
+        <span class="btn" [routerLink]="['/admin/add-users']"><i class="fas fa-user-plus "></i></span>
+      </div>
     </div>
-    <div class="table-responsive">
-      <table class="table shadow">
+    <div class="table-responsive mt-2">
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">Nom</th>
             <th scope="col">Prénom</th>
             <th scope="col">Mail</th>
             <th scope="col">Profil</th>
-            <th scope="col">Actions</th>
+            <th scope="col" class="text-center">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -21,30 +26,33 @@
             <td>{{user.email}}</td>
             <td>{{user.profil.libelle|lowercase}}</td>
             <td class="">
-              <span class="btn" title="Détails"><i class="far fa-info-circle"></i></span>
-              <span class="btn text-warning" title="Editer"><i class="fas fa-edit"></i></span>
-              <span class="btn text-danger" title="Supprimer"><i class="far fa-trash-alt"></i></span>
+              <button class="btn" title="Détails" [routerLink]="['/admin/detail-user',user.id]" ><i class="far fa-info-circle"></i></button>
+              <button class="btn text-warning" title="Editer"><i class="fas fa-edit"></i></button>
+              <button class="btn text-danger" title="Supprimer"><i class="far fa-trash-alt"></i></button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <nav class="d-flex justify-content-end p-0" aria-label="Page navigation example">
-      <ul class="pagination shadow">
-        <li class="page-item">
-          <a class="page-link" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link">1</a></li>
-        <li class="page-item"><a class="page-link">2</a></li>
-        <li class="page-item"><a class="page-link">3</a></li>
-        <li class="page-item">
-          <a class="page-link"  aria-label="Next">
+    <div class="row mt-2">
+      <div class="col-sm-10">
+        <div class="d-flex justify-content-end" aria-label="Page navigation example">
+          <button class="btn bg-color-primary-2 text-white mr-2" [disabled]="!isPrevious" (click)="first()">
+            <span aria-hidden="true" ><i class="fas fa-fast-backward"></i></span>
+          </button>
+          <button class="btn bg-color-primary-2 text-white mr-2" [disabled]="!isPrevious" (click)="previous()">
+            <span aria-hidden="true" >&laquo;</span>
+          </button>
+
+          <button class="btn bg-color-primary-2 text-white ml-3" (click)="next()" [disabled]="!isNext">
             <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+          </button>
+          <button class="btn bg-color-primary-2 text-white ml-3" (click)="last()" [disabled]="!isNext">
+            <span aria-hidden="true"><i class="fas fa-fast-forward"></i></span>
+          </button>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>

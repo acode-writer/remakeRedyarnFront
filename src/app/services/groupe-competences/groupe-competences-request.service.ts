@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { GroupeCompetence } from 'src/app/models/groupe-competence.models';
 import { environment } from './../../../environments/environment';
-import { GroupeCompetence } from './../../Models/groupe-competence.models';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,10 @@ import { GroupeCompetence } from './../../Models/groupe-competence.models';
 export class GroupeCompetencesRequestService {
 
   constructor(private httpClient: HttpClient) { }
-  getGroupeCompetences(): Observable<GroupeCompetence[]>{
-    return this.httpClient.get<GroupeCompetence[]>(`${environment.apiURL}/admin/grpecompetences?page=2`);
+  getGroupeCompetences(currentPage: number = 1): Observable<GroupeCompetence[]>{
+    return this.httpClient.get<GroupeCompetence[]>(`${environment.apiURL}/admin/grpecompetences?page=${currentPage}`);
+  }
+  count(){
+    return this.httpClient.get(`${environment.apiURL}/admin/grpecompetences/count`)
   }
 }

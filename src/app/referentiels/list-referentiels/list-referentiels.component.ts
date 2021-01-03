@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Referentiel } from './../../Models/referentiel.models';
+import { Referentiel } from '../../models/referentiel.models';
 import { ReferentielRequestService } from './../../services/referentiels/referentiel-request.service';
 
 @Component({

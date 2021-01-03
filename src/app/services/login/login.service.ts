@@ -11,15 +11,11 @@ import { HeaderService } from './../header/header.service';
 })
 export class LoginService {
   private decodedToken: any;
-  private isExpired;
+  private isExpired !: boolean;
+  private helper = new JwtHelperService();
+  private token : string|null;
   constructor(private httpClient: HttpClient,private headerService: HeaderService) {
-    const token = localStorage.getItem(environment.tokenName);
-    if(token){
-      const helper = new JwtHelperService();
-      this.decodedToken = helper.decodeToken(token);
-      this.isExpired = helper.isTokenExpired(token);
-    }
-
+    this.token = localStorage.getItem(environment.tokenName);
   }
 
   login(credentiels: unknown): Observable<any>{
@@ -34,10 +30,20 @@ export class LoginService {
   }
 
   get _decodedToken() {
-    return this.decodedToken;
+    if(this.token){
+      return this.helper.decodeToken(this.token);
+    }
+    return null;
   }
   get _isExpired() {
-    return this.isExpired;
+    if(this.token){
+      return this.helper.isTokenExpired(this.token);
+    }
+    return true;
+  }
+
+  set _isExpired(value: boolean){
+    this.isExpired = value;
   }
 
 }

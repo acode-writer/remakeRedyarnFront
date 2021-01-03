@@ -1,20 +1,23 @@
 <div class="card mt-4 shadow-lg">
   <div class="card-body shadow-lg">
-    <form class="" [formGroup]="form" >
+    <div class="row mt-4">
+      <div class="col-sm">
+        <h2 class="text-center">Ajouter des compétences</h2>
+      </div>
+    </div>
+    <form class="mt-4" [formGroup]="form" (ngSubmit)="onSubmit()" >
       <div class="form-group row">
         <label for="inputSelect" class="col-sm-3 col-form-label">Groupe de compétences </label>
           <div class="col-sm-6">
-            <select class="form-control" name="" id="inputSelect">
-              <option>Développer le back-end d'une application</option>
-              <option></option>
-              <option></option>
+            <select class="form-control" name="" id="inputSelect" formControlName="groupeCompetences" (change)="selectedGroupe()">
+              <option *ngFor="let groupeCompetence of grpeCompetences" [value]="groupeCompetence.id"> {{groupeCompetence.libelle}}</option>
             </select>
           </div>
       </div>
       <div class="form-group row">
         <label for="inputLibelle" class="col-sm-3 col-form-label">Libellé</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" id="inputLibelle">
+          <input type="text" class="form-control" id="inputLibelle" formControlName="libelle">
         </div>
       </div>
       <div class="form-group row">
@@ -35,42 +38,23 @@
       </div>
       <div class="form-group row">
         <div class="col-sm-3"></div>
-        <div class="col-sm-6 tab-content">
-          <div class="tab-pane fade in show active" id="niveau1">
+        <div class="col-sm-6 tab-content" formArrayName="niveaux">
+          <div class="tab-pane fade in  active" id="niveau{{i+1}}"
+              *ngFor="let level of niveaux.controls; let i = index"
+              [formGroupName]="i" >
               <div class="col-sm-6 mb-3 left">
                 <h6 class="text-danger">Groupe d'actions à réaliser</h6>
-                <textarea class="form-control" name="" id="" rows="3"></textarea>
+                <textarea class="form-control" name="" id="" rows="3" formControlName="groupeAction"></textarea>
               </div>
               <div class="col-sm-6 right">
                 <h6 class="text-danger">Critères d'évaluation</h6>
-                <textarea class="form-control" name="" id="" rows="3"></textarea>
+                <textarea class="form-control" name="" id="" rows="3" formControlName="critereEvaluation"></textarea>
               </div>
           </div>
-          <div class="tab-pane fade" id="niveau2">
-              <div class="col-sm-6 mb-3 left">
-                <h6 class="text-danger">Groupe d'actions à réaliser</h6>
-                <textarea class="form-control" name="" id="" rows="3"></textarea>
-              </div>
-              <div class="col-sm-6 right">
-                <h6 class="text-danger">Critères d'évaluation</h6>
-                <textarea class="form-control" name="" id="" rows="3"></textarea>
-              </div>
-          </div>
-          <div class="tab-pane fade" id="niveau3">
-              <div class="col-sm-6 mb-3 left">
-                <h6 class="text-danger">Groupe d'actions à réaliser</h6>
-                <textarea class="form-control" name="" id="" rows="3"></textarea>
-              </div>
-              <div class="col-sm-6 right">
-                <h6 class="text-danger">Critères d'évaluation</h6>
-                <textarea class="form-control" name="" id="" rows="3"></textarea>
-              </div>
-          </div>
-
         </div>
       </div>
       <div class="form-group row d-flex justify-content-center mt-4">
-        <button type="submit" class="btn bg-color-primary-3 btn-lg text-white ">Soumettre</button>
+        <button type="submit" class="btn bg-color-primary-3 btn-lg text-white">Soumettre</button>
       </div>
     </form>
   </div>

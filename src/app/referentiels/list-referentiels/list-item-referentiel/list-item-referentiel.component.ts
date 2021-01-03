@@ -1,5 +1,5 @@
-import { Referentiel } from './../../../Models/referentiel.models';
 import { Component, Input, OnInit } from '@angular/core';
+import { Referentiel } from 'src/app/models/referentiel.models';
 
 @Component({
   selector: 'app-list-item-referentiel',

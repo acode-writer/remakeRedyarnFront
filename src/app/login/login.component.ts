@@ -39,15 +39,15 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  onLogin() {
+  onLogin(): any {
     if(this.loginForm.valid){
       const credentiels = this.loginForm.value;
-      this.loginService.login(credentiels)
+      return this.loginService.login(credentiels)
           .subscribe(
             response => {
               const token = response.token;
               localStorage.setItem(environment.tokenName,token);
-              this.router.navigate(['/admin']);
+              return this.router.navigate(['/admin/users']);
             }
           );
     }

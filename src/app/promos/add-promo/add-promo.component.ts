@@ -1,5 +1,5 @@
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Stepper from 'bs-stepper';
 
 @Component({
@@ -8,7 +8,7 @@ import Stepper from 'bs-stepper';
   styleUrls: ['./add-promo.component.css']
 })
 export class AddPromoComponent implements OnInit {
-  private stepper : Stepper;
+  private stepper !: Stepper;
   form = new FormGroup({
     language: new FormControl('',[
       Validators.required
@@ -30,11 +30,13 @@ export class AddPromoComponent implements OnInit {
     ])
   });
   ngOnInit() {
-    const steps = document.querySelector('#stepper1');
-    this.stepper = new Stepper(steps, {
-      linear: false,
-      animation: true
-    })
+    const steps =  document.querySelector('#stepper1');
+    if(steps){
+      this.stepper = new Stepper( steps, {
+        linear: false,
+        animation: true
+      });
+    }
   }
 
   next() {
@@ -46,7 +48,9 @@ export class AddPromoComponent implements OnInit {
   }
 
   onSubmit() {
-    return false;
+    if(this.form.valid){
+
+    }
   }
 
 }

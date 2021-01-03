@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +30,11 @@ import { ListItemGrpeCompetenceComponent } from './grpe-competences/list-grpe-co
 import { ListReferentielsComponent } from './referentiels/list-referentiels/list-referentiels.component';
 import { ListItemReferentielComponent } from './referentiels/list-referentiels/list-item-referentiel/list-item-referentiel.component';
 import { SummarizePipe } from './pipes/summarize.pipe';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { DetailUserComponent } from './users/detail-user/detail-user.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -57,12 +63,18 @@ import { SummarizePipe } from './pipes/summarize.pipe';
     ListReferentielsComponent,
     ListItemReferentielComponent,
     SummarizePipe,
+    CapitalizePipe,
+    DetailUserComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    QRCodeModule,
+    RouterModule
   ],
   providers: [
     RequestsInterceptorProvider
