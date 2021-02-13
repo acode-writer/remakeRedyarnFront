@@ -11,13 +11,9 @@ import { HeaderService } from './../services/header/header.service';
 })
 export class HeaderComponent implements OnInit {
   isConnected = false;
-  constructor(private router: Router,public loginService: LoginService) { }
+  constructor(public loginService: LoginService) { }
 
   ngOnInit(): void {
   }
-  onLogout(){
-    this.isConnected = false;
-    localStorage.removeItem(environment.tokenName);
-    this.router.navigate(['/login']);
-  }
+
 }

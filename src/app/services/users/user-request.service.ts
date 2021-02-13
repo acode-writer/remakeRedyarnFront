@@ -29,6 +29,7 @@ export class UserRequestService {
   }
 
   put(id: number, data: FormData): Observable<any> {
+    data.append('_method','PUT');
     return  this.httpClient.post(`${environment.apiURL}/admin/users/${id}`, data);
   }
 }

@@ -18,7 +18,11 @@ export class ExpiredGuardService implements CanActivate  {
       let isExpired = helper.isTokenExpired(token);
       if(!isExpired){
         this.loginService._isExpired = false;
+        this.loginService.isConnected = true;
         return true;
+      }else{
+        this.loginService.isConnected = false;
+        return this.router.navigate(['/unauthorized']);
       }
     }
     return this.router.navigate(['/unauthorized']);

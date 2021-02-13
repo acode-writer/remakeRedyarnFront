@@ -5,7 +5,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto btn" *ngIf="!loginService._isExpired">
+    <ul class="navbar-nav mr-auto btn" *ngIf="loginService.isConnected">
       <li class="nav-item dropdown show">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Paramètres</a>
         <div class="dropdown-menu">
@@ -21,12 +21,12 @@
         <a class="nav-link"><i class="fas fa-user"></i> Utilisateurs</a>
       </li>
     </ul>
-    <ul class="nav navbar navbar-right" *ngIf="!loginService._isExpired">
+    <ul class="nav navbar navbar-right" *ngIf="loginService.isConnected">
       <li class="nav-item">
         <a class="nav-link text-white btn"><i class="fas fa-user-circle"></i></a>
       </li>
       <li class="nav-item" [routerLink]="['/admin/users']"
-      (click)="onLogout()"  title="Deconnexion" >
+      (click)="loginService.onLogout()"  title="Deconnexion" >
         <a class="nav-link text-white btn"><i class="fas fa-sign-out-alt"></i></a>
       </li>
 
