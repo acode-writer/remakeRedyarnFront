@@ -35,6 +35,8 @@ import { DetailUserComponent } from './users/detail-user/detail-user.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { CommonModule } from '@angular/common';
+import { ChipsComponent } from './chips/chips.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import { CommonModule } from '@angular/common';
     CapitalizePipe,
     DetailUserComponent,
     UnauthorizedComponent,
+    ChipsComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +77,8 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     HttpClientModule,
     QRCodeModule,
-    RouterModule
+    RouterModule,
+    InfiniteScrollModule,
   ],
   providers: [
     RequestsInterceptorProvider

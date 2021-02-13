@@ -23,6 +23,7 @@
     "angularx-qrcode": "^10.0.11",
     "bootstrap": "^4.5.3",
     "bs-stepper": "^1.7.0",
+    "ngx-infinite-scroll": "^10.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

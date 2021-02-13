@@ -5,25 +5,58 @@
         <h2 class="text-center">Création groupe de compétences</h2>
       </div>
     </div>
-    <form formGroup class="mt-4">
+    <form [formGroup]="form" class="mt-4" (ngSubmit)="onSubmit()" >
       <div class="form-group row">
         <label for="inputLibelle" class="col-sm-3 col-form-label">Libellé</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" id="inputLibelle">
+          <input type="text" class="form-control" id="inputLibelle" formControlName="libelle">
         </div>
       </div>
       <div class="form-group row">
         <label for="inputDescriptif" class="col-sm-3 col-form-label">Description</label>
         <div class="col-sm-6">
-          <textarea class="form-control" name="" id="inputDescriptif" rows="3"></textarea>
+          <textarea
+            class="form-control"
+            id="inputDescriptif"
+            rows="3"
+            formControlName="descriptif">
+          </textarea>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label for="inputCompetences" class="col-sm-3 col-form-label">Competences</label>
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-10">
+              <textarea
+                class="form-control"
+                name=""
+                id="inputCompetences"
+                rows="3"
+                formControlName="competences"
+                (input)="findCompetence()"
+                formControlName="libelleCompetence">
+              </textarea>
+            </div>
+            <div class="col-sm-2 mt-5">
+              <i class="fas fa-plus-circle" title="créer une nouvelle competence" style="cursor: pointer;"></i>
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group row">
-        <label for="inputCompetences" class="col-sm-3 col-form-label">Competences</label>
-        <div class="col-sm-6">
-          <textarea class="form-control" name="" id="inputCompetences" rows="3"></textarea>
-        </div>
+        <app-chips
+          *ngFor="let competence of competences"
+          [text]="competence.libelle"
+          (close)="onCloseChips($event)"
+          [id]="competence.id || 0"
+          class="mr-sm-1"></app-chips>
       </div>
+      <select class="selectpicker" multiple data-live-search="true" #selectpicker>
+        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+        <option data-tokens="mustard">Burger, Shake and a Smile</option>
+        <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+      </select>
 
       <div class="form-group row d-flex justify-content-center mt-4">
         <button type="submit" class="btn bg-color-primary-3 btn-lg text-white ">Soumettre</button>

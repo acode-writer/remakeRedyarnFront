@@ -1,3 +1,8 @@
-<app-list-item-grpe-competence class="col-sm-3 mb-4" *ngFor="let grpeCompetence of grpeCompetences" [grpeCompetence]="grpeCompetence"></app-list-item-grpe-competence>
-height : {{height}}
-current : {{x}}
+<app-list-item-grpe-competence
+  class="col-sm-3 mb-4"
+  *ngFor="let grpeCompetence of grpeCompetences"
+  [grpeCompetence]="grpeCompetence"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  (scrolled)="onScroll()">
+</app-list-item-grpe-competence>

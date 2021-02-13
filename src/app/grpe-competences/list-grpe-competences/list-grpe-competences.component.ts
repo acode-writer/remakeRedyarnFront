@@ -12,37 +12,36 @@ export class ListGrpeCompetencesComponent implements OnInit, OnDestroy {
   grpeCompetences: GroupeCompetence[] = [];
   grpeCompetencesSubscription !: Subscription;
   private itemPerPage: number = 10;
-  private currentPage: number = 1;
-  private pages !: number;
-  number !: number;
+  private nbrePages !: number;
+  private currentPage = 1;
   numberSubscription !: Subscription;
-  height !: number;
-  x !: number;
   constructor(private groupeCompetencesRequestService: GroupeCompetencesRequestService) { }
 
   ngOnInit(): void {
-    this.getGrpe();
+    this.getGrpe(this.currentPage);
     this.count();
-    this.scroll()
-  }
-  scroll(){
-    window.addEventListener("scroll",this.scrollEvent);
   }
   count() {
     this.numberSubscription = this.groupeCompetencesRequestService.count()
         .subscribe(
-          response => {
-            this.number = +response["1"];
-            this.pages = Math.round(this.number / this.itemPerPage);
+          (response) => {
+            const nbreGrpeCompetence = +response;
+            this.nbrePages = Math.ceil(nbreGrpeCompetence / this.itemPerPage);
           }
         );
   }
-  getGrpe(){
-    this.grpeCompetencesSubscription = this.groupeCompetencesRequestService.getGroupeCompetences()
+  getGrpe(page: number){
+    this.grpeCompetencesSubscription = this.groupeCompetencesRequestService.getGroupeCompetences(page)
         .subscribe(
           response => {
-            this.grpeCompetences = response;
+            this.grpeCompetences = this.grpeCompetences.concat(response);
           });
+  }
+  onScroll(){
+    if(this.currentPage < this.nbrePages){
+      this.currentPage++;
+      this.getGrpe(this.currentPage);
+    }
   }
   scrollEvent(){
     const scrollheight = document.body.offsetHeight;
