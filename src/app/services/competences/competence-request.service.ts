@@ -14,4 +14,17 @@ export class CompetenceRequestService {
   add(competence: Competence): Observable<Competence> {
     return this.httpClient.post<Competence>(`${environment.apiURL}/admin/competences`,competence);
   }
+  put(id:number,competence: Competence){
+    return this.httpClient.put<Competence>(`${environment.apiURL}/admin/competences/${id}`,competence);
+  }
+  getCompetences(libelle: string | null = null): Observable<Competence[]> {
+    if(libelle){
+      return this.httpClient.get<Competence[]>(`${environment.apiURL}/admin/competences?libelle=${libelle}`);
+    }else{
+      return this.httpClient.get<Competence[]>(`${environment.apiURL}/admin/competences`);
+    }
+  }
+  getCompetence(id:number): Observable<Competence> {
+    return this.httpClient.get<Competence>(`${environment.apiURL}/admin/competences/${id}`);
+  }
 }
