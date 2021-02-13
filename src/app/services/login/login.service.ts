@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -14,7 +15,9 @@ export class LoginService {
   private isExpired !: boolean;
   private helper = new JwtHelperService();
   private token : string|null;
-  constructor(private httpClient: HttpClient,private headerService: HeaderService) {
+  isConnected = false;
+  constructor(private httpClient: HttpClient
+    ,private headerService: HeaderService, private router: Router) {
     this.token = localStorage.getItem(environment.tokenName);
   }
 
@@ -44,6 +47,12 @@ export class LoginService {
 
   set _isExpired(value: boolean){
     this.isExpired = value;
+  }
+
+  onLogout(){
+    this.isConnected = false;
+    localStorage.removeItem(environment.tokenName);
+    this.router.navigate(['/login']);
   }
 
 }

@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
             response => {
               const token = response.token;
               localStorage.setItem(environment.tokenName,token);
+              this.loginService.isConnected = true;
               return this.router.navigate(['/admin/users']);
             }
           );
