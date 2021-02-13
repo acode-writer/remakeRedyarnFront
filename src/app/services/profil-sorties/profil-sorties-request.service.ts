@@ -11,7 +11,7 @@ export class ProfilSortiesRequestService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getProfilSorties(): Observable<ProfilSortie[]>{
-    return this.httpClient.get<ProfilSortie[]>(`${environment.apiURL}/admin/profilsorties?isDeleted=false`);
+  getProfilSorties(current: number): Observable<ProfilSortie[]>{
+    return this.httpClient.get<ProfilSortie[]>(`${environment.apiURL}/admin/profilsorties?isDeleted=false&page=${current}`);
   }
 }

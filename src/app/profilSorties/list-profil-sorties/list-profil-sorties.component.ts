@@ -11,10 +11,16 @@ import { ProfilSortie } from '../../models/profil-sortie.models';
 export class ListProfilSortiesComponent implements OnInit, OnDestroy {
   profilsSorties: ProfilSortie[] = [];
   profilSortieSubscription !: Subscription;
+  isPrevious: boolean = false;
+  isNext: boolean = true;
+  private currentPage: number = 1;
   constructor(private profilSortiesRequestService: ProfilSortiesRequestService) { }
 
   ngOnInit(): void {
-    this.profilSortieSubscription = this.profilSortiesRequestService.getProfilSorties()
+    this.getProfilSorties(this.currentPage);
+  }
+  getProfilSorties(currentPage: number){
+    this.profilSortieSubscription = this.profilSortiesRequestService.getProfilSorties(currentPage)
         .subscribe(
           success => {
             this.profilsSorties = success;
@@ -22,6 +28,19 @@ export class ListProfilSortiesComponent implements OnInit, OnDestroy {
         );
   }
 
+  first(){
+
+  }
+
+  previous(){
+
+  }
+  next(){
+
+  }
+  last(){
+
+  }
   ngOnDestroy(): void {
     this.profilSortieSubscription.unsubscribe();
   }

@@ -6,7 +6,7 @@
       </div>
       <span class="btn col-sm-2"><i class="fas fa-user-plus "></i></span>
     </div>
-    <table class="table mt-2">
+    <table class="table ">
       <thead>
         <tr>
           <th scope="col">Libellé</th>
@@ -14,34 +14,32 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let profilSortie of profilsSorties">
+        <tr *ngFor="let profilSortie of profilsSorties" class="m-0">
           <td>{{profilSortie.libelle | capitalize}}</td>
           <td>
-            <span class="btn col-sm-4 text-right" title="Editer"><i class="fas fa-edit text-warning"></i> <span class="ml-2">Éditer</span></span>
-            <span class="btn col-sm-4 text-right" title="Supprimer"><i class="far fa-trash-alt text-danger"></i> <span class="ml-2">Supprimer</span></span>
+            <span class="btn col-sm-4 text-right m-0" title="Editer"><i class="fas fa-edit text-warning"></i> <span class="ml-2">Éditer</span></span>
+            <span class="btn col-sm-4 text-right m-0" title="Supprimer"><i class="far fa-trash-alt text-danger"></i> <span class="ml-2">Supprimer</span></span>
           </td>
         </tr>
       </tbody>
     </table>
-    <div class="row">
+    <div class="row mt-2">
       <div class="col-sm-10">
-        <nav class="d-flex justify-content-end" aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="page-link" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link">1</a></li>
-            <li class="page-item"><a class="page-link">2</a></li>
-            <li class="page-item"><a class="page-link">3</a></li>
-            <li class="page-item">
-              <a class="page-link" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <div class="d-flex justify-content-end" aria-label="Page navigation example">
+          <button class="btn bg-color-primary-2 text-white mr-2" [disabled]="!isPrevious" (click)="first()">
+            <span aria-hidden="true" ><i class="fas fa-fast-backward"></i></span>
+          </button>
+          <button class="btn bg-color-primary-2 text-white mr-2" [disabled]="!isPrevious" (click)="previous()">
+            <span aria-hidden="true" >&laquo;</span>
+          </button>
+
+          <button class="btn bg-color-primary-2 text-white ml-3" (click)="next()" [disabled]="!isNext">
+            <span aria-hidden="true">&raquo;</span>
+          </button>
+          <button class="btn bg-color-primary-2 text-white ml-3" (click)="last()" [disabled]="!isNext">
+            <span aria-hidden="true"><i class="fas fa-fast-forward"></i></span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
