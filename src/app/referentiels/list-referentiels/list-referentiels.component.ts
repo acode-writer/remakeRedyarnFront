@@ -10,16 +10,43 @@ import { ReferentielRequestService } from './../../services/referentiels/referen
 })
 export class ListReferentielsComponent implements OnInit, OnDestroy {
   referentiels: Referentiel[] = [];
+  private page = 1;
+  private nbrePage !: number;
+  private referetielsPerPage = 10;
   private referentielsSubscription !: Subscription;
   constructor(private referentielRequestService: ReferentielRequestService) { }
   ngOnInit(): void {
-    this.referentielsSubscription = this.referentielRequestService.gets()
+    this.getReferentiels(this.page);
+    this.countReferentiels();
+  }
+  getReferentiels(page:number){
+    this.referentielsSubscription = this.referentielRequestService.gets(page)
         .subscribe(
           response => {
-            this.referentiels = response;
+            this.referentiels = this.referentiels.concat(response);
           }
         );
   }
+  onScroll(){
+    if(this.page < this.nbrePage)
+    {
+      this.page++;
+      this.getReferentiels(this.page);
+    }
+    console.log(this.referentiels.length);
+
+  }
+
+  countReferentiels() {
+    this.referentielRequestService.count()
+      .subscribe(
+        response => {
+          const nbreReferentiels = +response;
+          this.nbrePage = Math.ceil(nbreReferentiels/this.referetielsPerPage);
+        }
+      )
+  }
+
   ngOnDestroy(): void {
     this.referentielsSubscription.unsubscribe();
   }

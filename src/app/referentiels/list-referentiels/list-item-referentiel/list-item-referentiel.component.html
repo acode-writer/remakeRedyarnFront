@@ -12,63 +12,63 @@
   <div class="card">
     <div class="card-header" id="headingTwo">
       <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#presentation" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" [attr.data-target]="'#presentation'+referentiel.id" aria-expanded="false" aria-controls="collapseTwo">
           Presentation
         </button>
       </h2>
     </div>
-    <div id="presentation" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+    <div [id]="'presentation'+referentiel.id" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body"> {{referentiel.presentation}} </div>
     </div>
   </div>
   <div class="card">
     <div class="card-header" id="headingTwo">
       <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#grpecompetence" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" [attr.data-target]="'#grpecompetence'+referentiel.id" aria-expanded="false" aria-controls="collapseTwo">
           Groupe de compétences
         </button>
       </h2>
     </div>
-    <div id="grpecompetence" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+    <div [id]="'grpecompetence'+referentiel.id" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
       <div class="card-body">
         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
       </div>
     </div>
   </div>
 
-  <div class="card">
+  <!-- <div class="card">
     <div class="card-header" id="headingThree">
       <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#programme" aria-expanded="false" aria-controls="collapseThree">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" [attr.data-target]="'#programme'+referentiel.id" aria-expanded="false" aria-controls="collapseThree">
           Programme
         </button>
       </h2>
     </div>
-    <div id="programme" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+    <div [id]="'programme'+referentiel.id" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body"> {{referentiel.programme}} </div>
     </div>
-  </div>
+  </div> -->
   <div class="card">
     <div class="card-header" id="headingThree">
       <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#critereEvaluation" aria-expanded="false" aria-controls="collapseThree">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" [attr.data-target]="'#critereEvaluation'+referentiel.id" aria-expanded="false" aria-controls="collapseThree">
           Critère d'évaluation
         </button>
       </h2>
     </div>
-    <div id="critereEvaluation" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+    <div [id]="'critereEvaluation'+referentiel.id" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body"> {{referentiel.critereEvaluation}} </div>
     </div>
   </div>
   <div class="card">
     <div class="card-header" id="headingThree">
       <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#critereAdmission" aria-expanded="false" aria-controls="collapseThree">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" [attr.data-target]="'#critereAdmission'+referentiel.id" aria-expanded="false" aria-controls="collapseThree">
           Critère d'admission
         </button>
       </h2>
     </div>
-    <div id="critereAdmission" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+    <div [id]="'critereAdmission'+referentiel.id" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body"> {{referentiel.critereAdmission}} </div>
     </div>
   </div>

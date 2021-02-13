@@ -1,1 +1,8 @@
-<app-list-item-referentiel class="col-sm-3 mb-4" *ngFor="let referentiel of referentiels" [referentiel]="referentiel"></app-list-item-referentiel>
+<app-list-item-referentiel
+  class="col-sm-3 mb-4"
+  *ngFor="let referentiel of referentiels"
+  [referentiel]="referentiel"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  (scrolled)="onScroll()">
+</app-list-item-referentiel>

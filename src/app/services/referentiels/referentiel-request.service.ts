@@ -10,7 +10,10 @@ import { Referentiel } from '../../models/referentiel.models';
 export class ReferentielRequestService {
   referentiels: Referentiel[] = [];
   constructor(private httpClient: HttpClient) { }
-  gets(): Observable<Referentiel[]>{
-    return this.httpClient.get<Referentiel[]>(`${environment.apiURL}/admin/referentiels`);
+  gets(page:number): Observable<Referentiel[]>{
+    return this.httpClient.get<Referentiel[]>(`${environment.apiURL}/admin/referentiels?page=${page}`);
+  }
+  count(): Observable<string>{
+    return this.httpClient.get<string>(`${environment.apiURL}/admin/referentiels/count`);
   }
 }
