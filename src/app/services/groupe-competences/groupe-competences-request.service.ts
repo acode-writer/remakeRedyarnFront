@@ -10,9 +10,13 @@ import { environment } from './../../../environments/environment';
 export class GroupeCompetencesRequestService {
 
   constructor(private httpClient: HttpClient) { }
+  add(groupeCometence:GroupeCompetence): Observable<GroupeCompetence> {
+    return this.httpClient.post<GroupeCompetence>(`${environment.apiURL}/admin/grpecompetences`,groupeCometence);
+  }
   getGroupeCompetences(currentPage: number = 1): Observable<GroupeCompetence[]>{
     return this.httpClient.get<GroupeCompetence[]>(`${environment.apiURL}/admin/grpecompetences?page=${currentPage}`);
   }
+
   count(){
     return this.httpClient.get(`${environment.apiURL}/admin/grpecompetences/count`)
   }

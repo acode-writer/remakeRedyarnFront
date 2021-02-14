@@ -4,7 +4,7 @@ import { GroupeCompetencesRequestService } from './../../services/groupe-compete
 import { GroupeCompetence } from 'src/app/models/groupe-competence.models';
 import { CompetenceRequestService } from './../../services/competences/competence-request.service';
 import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -19,6 +19,8 @@ export class AddCompetenceComponent implements OnInit, OnDestroy {
   grpeCompetencesSubscription !: Subscription;
   id !: number;
   competence !: Competence;
+  @Input() fromGrpComp !:boolean;
+  @Output() createdSkillEmitter  = new EventEmitter<any>();
   private routeSubscription !: Subscription;
   private competenceSubscription !: Subscription;
   constructor(private fb: FormBuilder, private competenceRequestService: CompetenceRequestService,
@@ -29,6 +31,8 @@ export class AddCompetenceComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initializeForm();
+    console.log(this.fromGrpComp);
+
   }
   initializeForm(): void {
     this.routeSubscription = this.route.params.subscribe(
@@ -40,16 +44,21 @@ export class AddCompetenceComponent implements OnInit, OnDestroy {
               (response: Competence) => {
                 this.competence = response;
                 this.libelle?.setValue(this.competence.libelle);
+                this.form.get("groupeCompetences")?.setValue(this.competence.groupeCompetences);
                 const len = this.competence.niveaux.length;
                 if(len){
                   this.niveaux.setValue([response.niveaux[0],response.niveaux[1],response.niveaux[2]]);
                 }
               }
             );
-          this.initUpdateForm();
-        }else{
           this.initAddForm();
-          this.getGrpeCompetences();
+        }else{
+          if(this.fromGrpComp){
+            this.initUpdateForm();
+          }else{
+            this.initAddForm();
+            this.getGrpeCompetences();
+          }
         }
       }
     );
@@ -94,26 +103,36 @@ export class AddCompetenceComponent implements OnInit, OnDestroy {
 
   onSubmit(){
     if(this.form.valid){
-      const competencte = this.form.value;
-      if(this.id){
-        this.addSubscription = this.competenceRequestService.put(this.id,competencte)
-            .subscribe(
-              (response:unknown) => {
-                // const url = new URL('http://localhost:3000/hub');
-                // url.searchParams.append('topic', 'http://example.com/books/'+this.id);
-                // const eventSource = new EventSource(url);
-                // eventSource.onmessage = event => {
-                //     console.log(JSON.parse(event.data));
-                // }
-              }
-            );
-      }else {
-        this.addSubscription = this.competenceRequestService.add(competencte)
-            .subscribe(
-              response => {
-                console.log(response);
-              }
-            );
+      if(this.fromGrpComp){
+        const competence: any = {
+          libelle: this.libelle?.value,
+          groupeCompetences: [],
+          niveveaux: this.niveaux.value
+        };
+        this.createdSkillEmitter.emit(competence);
+      }
+      else{
+        const competencte = this.form.value;
+        if(this.id){
+          this.addSubscription = this.competenceRequestService.put(this.id,competencte)
+              .subscribe(
+                (response:unknown) => {
+                  // const url = new URL('http://localhost:3000/hub');
+                  // url.searchParams.append('topic', 'http://example.com/books/'+this.id);
+                  // const eventSource = new EventSource(url);
+                  // eventSource.onmessage = event => {
+                  //     console.log(JSON.parse(event.data));
+                  // }
+                }
+              );
+        }else {
+          this.addSubscription = this.competenceRequestService.add(competencte)
+              .subscribe(
+                response => {
+                  console.log(response);
+                }
+              );
+        }
       }
     }
   }

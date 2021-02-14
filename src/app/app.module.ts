@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, ɵNgSelectMultipleOption } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +37,7 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { CommonModule } from '@angular/common';
 import { ChipsComponent } from './chips/chips.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     QRCodeModule,
     RouterModule,
     InfiniteScrollModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [
     RequestsInterceptorProvider
